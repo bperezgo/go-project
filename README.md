@@ -3,13 +3,16 @@
 This is a example of use of go in a backend project. I will use gin like backend framework and it will be generated a connection with a MongoDB
 
 		To obtain gin framework
-´go get -u github.com/gin-gonic/gin´
+`go get -u github.com/gin-gonic/gin`
 
 		To obtain mongodb driver in golang
-´go get go.mongodb.org/mongo-driver/mongo´
+`go get go.mongodb.org/mongo-driver/mongo`
 
 		I will use Golang to my reading to my configuration file
-´go get github.com/tkanos/gonfig´
+`go get github.com/tkanos/gonfig`
+
+		I will use gjson to parse json data of the response of market provider
+`go get -u github.com/tidwall/gjson`
 
 ## Description of the app
 
