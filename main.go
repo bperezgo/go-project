@@ -15,6 +15,6 @@ func main() {
 		panic(err)
 	}
 	router := gin.Default()
-	router.GET("/ping", article.QueryMarket)
+	router.GET("/query-market", article.QueryMarket)
 	router.Run(fmt.Sprintf(":%d", configuration.Port))
 }

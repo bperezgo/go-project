@@ -21,10 +21,12 @@ require (
 	golang.org/x/text v0.3.6 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	query_market/article v0.0.0
 )
 
 require (
 	github.com/go-playground/universal-translator v0.18.0 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.2 // indirect
+	github.com/satori/go.uuid v1.2.0 // indirect
+	gorm.io/gorm v1.21.13 // indirect
 )
-

@@ -1,7 +1,7 @@
 package article
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/bperezgo/go-project/query_market/app"
 	"github.com/gin-gonic/gin"
@@ -13,9 +13,11 @@ func QueryMarket(c *gin.Context) {
 		ApiKey: "Q91SW473ZUOZ9FZE",
 	}
 	options := app.MarketProviderOptions{Symbol: "IBM"}
-	_, err := vantageProvider.GetData(options)
+	marketData, err := vantageProvider.GetData(options)
+	fmt.Printf("%v\n", marketData)
+	// save data in the database
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
 	}
 	c.JSON(200, gin.H{
 		"message": "pong",

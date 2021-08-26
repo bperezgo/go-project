@@ -3,9 +3,11 @@ package app
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/bperezgo/go-project/query_market/domain"
+	"github.com/satori/go.uuid"
 	"io/ioutil"
 	"net/http"
-	"github.com/bperezgo/go-project/query_market/domain"
+	"time"
 )
 
 type VantageProvider struct {
@@ -30,6 +32,23 @@ func (v *VantageProvider) GetData(options MarketProviderOptions) ([]domain.Marke
 	if err := json.Unmarshal(responseData, &vantageResponse); err != nil {
 		return nil, err
 	}
-	fmt.Printf("%+v\n", vantageResponse)
-	return []domain.MarketDataModel{}, nil
+	marketDataModel := []domain.MarketDataModel{}
+	for date, v := range vantageResponse.TimeSeries {
+		openValue := ParseToFloat32(*&v.OpenValue)
+		closeValue := ParseToFloat32(*&v.CloseValue)
+		highValue := ParseToFloat32(*&v.HighValue)
+		lowValue := ParseToFloat32(*&v.LowValue)
+		symbol := options.Symbol
+		timeDate, _ := time.Parse("2006-01-02", date)
+		marketDataModel = append(marketDataModel, domain.MarketDataModel{
+			Id:         uuid.NewV4(),
+			Time:       timeDate,
+			OpenValue:  openValue,
+			HighValue:  highValue,
+			LowValue:   lowValue,
+			CloseValue: closeValue,
+			Symbol:     symbol,
+		})
+	}
+	return marketDataModel, nil
 }

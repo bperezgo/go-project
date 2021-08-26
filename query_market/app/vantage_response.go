@@ -1,16 +1,16 @@
 package app
 
 type VantageValuesData struct {
-	OpenValue  float32 `json:"1. open"`
-	HighValue  float32 `json:"2. high"`
-	LowValue   float32 `json:"3. low"`
-	CloseValue float32 `json:"4. close"`
-}
-
-type TimeSeriesDailyStruct struct {
-	Time map[string]VantageValuesData
+	OpenValue        string `json:"1. open"`
+	HighValue        string `json:"2. high"`
+	LowValue         string `json:"3. low"`
+	CloseValue       string `json:"4. close"`
+	AdjustedClose    string `json:"5. adjusted close"`
+	Volume           string `json:"6. volume"`
+	DividedAmount    string `json:"7. dividend amount"`
+	SplitCoefficient string `json:"8. split coefficient"`
 }
 
 type VantageResponse struct {
-	TimeSeriesDaily TimeSeriesDailyStruct `json:"Time Series (Daily)"`
+	TimeSeries map[string]*VantageValuesData `json:"Time Series (Daily)"`
 }
