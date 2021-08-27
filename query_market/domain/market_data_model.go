@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-type MarketDataModel struct {
+type MarketData struct {
 	Id         uuid.UUID `gorm:"type:uuid;primary_key;default:uuid_generate_v4()"`
 	Time       time.Time
 	OpenValue  float32

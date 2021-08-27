@@ -15,7 +15,7 @@ type VantageProvider struct {
 	ApiKey string
 }
 
-func (v *VantageProvider) GetData(options MarketProviderOptions) ([]domain.MarketDataModel, error) {
+func (v *VantageProvider) GetData(options MarketProviderOptions) ([]domain.MarketData, error) {
 	var vantageResponse VantageResponse
 	url := fmt.Sprintf("%s/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=%s&apikey=%s", v.Url, options.Symbol, v.ApiKey)
 	resp, err := http.Get(url)
@@ -32,7 +32,7 @@ func (v *VantageProvider) GetData(options MarketProviderOptions) ([]domain.Marke
 	if err := json.Unmarshal(responseData, &vantageResponse); err != nil {
 		return nil, err
 	}
-	marketDataModel := []domain.MarketDataModel{}
+	marketDataModel := []domain.MarketData{}
 	for date, v := range vantageResponse.TimeSeries {
 		openValue := ParseToFloat32(*&v.OpenValue)
 		closeValue := ParseToFloat32(*&v.CloseValue)
@@ -40,7 +40,7 @@ func (v *VantageProvider) GetData(options MarketProviderOptions) ([]domain.Marke
 		lowValue := ParseToFloat32(*&v.LowValue)
 		symbol := options.Symbol
 		timeDate, _ := time.Parse("2006-01-02", date)
-		marketDataModel = append(marketDataModel, domain.MarketDataModel{
+		marketDataModel = append(marketDataModel, domain.MarketData{
 			Id:         uuid.NewV4(),
 			Time:       timeDate,
 			OpenValue:  openValue,

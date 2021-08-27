@@ -14,6 +14,9 @@ This is a example of use of go in a backend project. I will use gin like backend
 		I will use gjson to parse json data of the response of market provider
 `go get -u github.com/tidwall/gjson`
 
+		Migrations will assume with golang-migrate tool
+`brew install golang-migrate` To install in mac
+
 ## Description of the app
 
 This app consist in query market information of 'alpaca' and save the data in a mongo database.

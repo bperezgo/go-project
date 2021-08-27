@@ -7,5 +7,5 @@ type MarketProviderOptions struct {
 }
 
 type IMarketProviderAdapter interface {
-	GetData(options MarketProviderOptions) []domain.MarketDataModel
+	GetData(options MarketProviderOptions) []domain.MarketData
 }
