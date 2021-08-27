@@ -24,3 +24,13 @@ This app consist in query market information of 'alpaca' and save the data in a 
 ### v0.0.1
 
 With one route the user say the backend: 'Hey! query some data of some market', and with other route the user can get the data in the database
+
+# How to Init the project
+
+First, change to executable the script of init_db.sh in the scripts folder:
+
+`chmod +x scripts/init_db.sh`
+
+Then execute it to initialize the database of the project and the migrations
+
+`./scripts/init_db.sh`
