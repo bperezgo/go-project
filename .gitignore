@@ -2,4 +2,5 @@ configuration.json
 go-project
 tags
 .vscode/
-scripts/init.sh
+
+*.env
