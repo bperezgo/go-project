@@ -11,6 +11,6 @@ import (
 func main() {
 	config := config.GetConfiguration()
 	router := gin.Default()
-	router.GET("/query-market", article.QueryMarket)
+	router.POST("/query-market", article.QueryMarket)
 	router.Run(fmt.Sprintf(":%d", config.Port))
 }
