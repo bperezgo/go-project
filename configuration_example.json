@@ -1,0 +1,11 @@
+{
+	"Port": 8081,
+	"AlphaVantageApiKey": "ABCDEFGHI",
+	"MarketDataProviderUrl": "https://www.alphavantage.co",
+	
+	"PgHostname": "localhost",
+	"PgPort": "5432",
+	"PgDB": "market",
+	"PgPassword": "PgPassword",
+	"PgUser": "PgUser"
+}
